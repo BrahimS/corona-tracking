@@ -10,7 +10,9 @@ export const getData = async () => {
 			data: { confirmed, recovered, deaths, lastUpdate },
 		} = await axios.get(apiUrl);
 		return { confirmed, recovered, deaths, lastUpdate };
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 export const getDailyData = async () => {
@@ -22,5 +24,18 @@ export const getDailyData = async () => {
 			date: dailyData.reportDate,
 		}));
 		return modifiedData;
-	} catch (error) {}
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const fetchCountries = async () => {
+	try {
+		const {
+			data: { countries },
+		} = await axios.get(`${apiUrl}/countries`);
+		return countries.map((country) => country.name);
+	} catch (error) {
+		console.log(error);
+	}
 };
