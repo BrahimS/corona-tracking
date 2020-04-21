@@ -4,11 +4,15 @@ const apiUrl = "https://covid19.mathdro.id/api";
 
 // get Data from the API
 
-export const getData = async () => {
+export const getData = async (country) => {
+	let changeableUrl = apiUrl;
+	if (country) {
+		changeableUrl = `${apiUrl}/countries/${country}`;
+	}
 	try {
 		const {
 			data: { confirmed, recovered, deaths, lastUpdate },
-		} = await axios.get(apiUrl);
+		} = await axios.get(changeableUrl);
 		return { confirmed, recovered, deaths, lastUpdate };
 	} catch (error) {
 		console.log(error);

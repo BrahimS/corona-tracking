@@ -11,3 +11,8 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+.image {
+	width: 370px;
+	margin-top: 50px;
+}
